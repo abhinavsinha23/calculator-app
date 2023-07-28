@@ -7,8 +7,12 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 40vw;
+  width: 30vw;
   margin: auto;
+}
+
+.displayContainer {
+  background-color: blue;
 }
 
 .calculatorDisplay {
@@ -30,6 +34,12 @@ body {
   padding: 5%;
   font-size: 15pt;
   flex: 33%;
+  background-color: aqua;
+}
+
+.num:hover, .operationsItem:hover{
+  background-color: red;
+  color: white;
 }
 
 .operations {
@@ -43,4 +53,5 @@ body {
 .operationsItem {
   padding: 2%;
   font-size: 22pt;
+  width: 16.5%;
 }

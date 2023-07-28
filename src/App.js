@@ -6,22 +6,35 @@ function App() {
 
   const signs = ["+", "-", "*", "/", "C", "="];
 
-  const [num1, setNum1] = useState(Number(""))
+  const [num1, setNum1] = useState(0)
 
-  const [num2, setNum2] = useState(Number(""))
+  const [num2, setNum2] = useState(0)
   
   const [runningSum, setRunningSum] = useState(0)
 
   const [operation, setOperation] = useState("?")
 
-  const [num3, setNum3] = useState(Number(""))
+  const [num3, setNum3] = useState(0)
 
-  const updateNum = (value) => {
+  const updateNum = (num) => {
     if (operation === "?"){
-      setNum1(Number(num1.toString() + value.toString()))
+      setNum1(Number(num1.toString() + num.toString()))
     }
     else {
-      setNum2(Number(num2.toString() + value.toString()))
+      let value = Number(num2.toString() + num.toString());
+      setNum2(value)
+      if (operation === "+") {
+        setRunningSum(num1+value)
+      }
+      else if (operation === "-") {
+        setRunningSum(num1-value)
+      }
+      else if (operation === "*") {
+        setRunningSum(num1*value)
+      }
+      else if (operation === "/") {
+        setRunningSum(num1/value)
+      }
     }
   }
 
@@ -92,15 +105,19 @@ function App() {
   const calculate = () => {
     if (operation === "+") {
       setNum3(num1+num2)
+      setRunningSum(num1+num2)
     }
     else if (operation === "-") {
       setNum3(num1-num2)
+      setRunningSum(num1-num2)
     }
     else if (operation === "*") {
       setNum3(num1*num2)
+      setRunningSum(num1*num2)
     }
     else if (operation === "/") {
       setNum3(num1/num2)
+      setRunningSum(num1/num2)
     }
     else {
       alert("You haven't selected an arithmetic operator!")
@@ -130,21 +147,21 @@ function App() {
 
   return (
     <div className='container'>
-      <div>
+      <div className='displayContainer'>
         <h1 className='calculatorDisplay'>{num1.toString()} {operation} {num2.toString()} = {num3.toString()}</h1>
-        <h2 className='runningSum'>{runningSum.toString()}</h2>
       </div>
+        <h2 className='runningSum'>{runningSum.toString()}</h2>
       <div className='box' >
         {nums.map((num, index) => {
           return (
-              <button key={index} className='num' onClick={() => {updateNum(num)}}>{num}</button>
+              <button key={index} className='num' onClick={() => updateNum(num)}>{num}</button>
           )
         })}
       </div>
       <div className='operations'>
         {signs.map((sign, index) => {
           return (
-            <button key={index} className='operationsItem' onClick={() => {showSign(sign)}}>{sign}</button>
+            <button key={index} className='operationsItem' onClick={() => showSign(sign)}>{sign}</button>
           )
         })}
       </div>
