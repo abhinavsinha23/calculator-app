@@ -1,0 +1,46 @@
+body {
+  background-color: black;
+}
+
+.container {
+  border: 3px solid red;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 40vw;
+  margin: auto;
+}
+
+.calculatorDisplay {
+  color: white;
+  text-align: center;
+}
+
+.runningSum {
+  text-align: center;
+  color: white;
+}
+
+.box {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.num {
+  padding: 5%;
+  font-size: 15pt;
+  flex: 33%;
+}
+
+.operations {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.operationsItem {
+  padding: 2%;
+  font-size: 22pt;
+}
